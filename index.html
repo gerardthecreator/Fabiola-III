@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ayudando a Fabiola Parte III | Física Vertical</title>
+
+    <!-- Fuentes: Anton y Oswald -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- MathJax v3 para fórmulas matemáticas -->
+    <!-- NOTA: Se eliminó polyfill.io porque causa conflictos y errores de seguridad -->
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <!-- Hojas de Estilo -->
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="Diseño.css">
+    <link rel="stylesheet" href="Responsive.css">
+    <link rel="stylesheet" href="Vista_celular.css">
+</head>
+<body>
+
+    <!-- Fondo con gradientes -->
+    <div class="background-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="main-wrapper glass-container">
+        
+        <!-- Encabezado -->
+        <header class="neu-header">
+            <h1 class="main-title">AYUDANDO A FABIOLA PARTE III</h1>
+            <p class="subtitle">Clase del Jueves que Fabiola no vino por abusadora y contagiadora de enfermedades</p>
+        </header>
+
+        <!-- Navegación Principal -->
+        <nav class="neu-nav">
+            <button class="neu-btn active" data-target="seccion-teoria">Teoría</button>
+            <button class="neu-btn" data-target="seccion-ejercicio1">Ejercicio 1</button>
+            <button class="neu-btn" data-target="seccion-ejercicio2">Ejercicio 2</button>
+            <button class="neu-btn" data-target="seccion-ejercicio3">Ejercicio 3</button>
+        </nav>
+
+        <!-- Contenedor de Contenido -->
+        <main class="content-area">
+
+            <!-- SECCIÓN: TEORÍA -->
+            <section id="seccion-teoria" class="tab-content active">
+                <div class="glass-panel">
+                    <h2 class="section-title">Fundamentos Teóricos</h2>
+                    <div id="contenido-teoria"></div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: EJERCICIO 1 -->
+            <section id="seccion-ejercicio1" class="tab-content">
+                <div class="glass-panel">
+                    <h2 class="section-title">Ejercicio 1: Bateo Vertical</h2>
+                    <div id="enunciado-ej1" class="problem-statement"></div>
+                    <div class="canvas-wrapper neu-inset">
+                        <canvas id="canvas1"></canvas>
+                        <div class="controls">
+                            <button id="btn-anim-1" class="neu-btn-small">Reproducir Animación</button>
+                            <button id="btn-reset-1" class="neu-btn-small">Reiniciar</button>
+                        </div>
+                    </div>
+                    <div id="solucion-ej1" class="step-by-step-solution"></div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: EJERCICIO 2 -->
+            <section id="seccion-ejercicio2" class="tab-content">
+                <div class="glass-panel">
+                    <h2 class="section-title">Ejercicio 2: Encuentro de Pelotas</h2>
+                    <div id="enunciado-ej2" class="problem-statement"></div>
+                    <div class="canvas-wrapper neu-inset">
+                        <canvas id="canvas2"></canvas>
+                        <div class="controls">
+                            <button id="btn-anim-2" class="neu-btn-small">Reproducir Animación</button>
+                            <button id="btn-reset-2" class="neu-btn-small">Reiniciar</button>
+                        </div>
+                    </div>
+                    <div id="solucion-ej2" class="step-by-step-solution"></div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN: EJERCICIO 3 -->
+            <section id="seccion-ejercicio3" class="tab-content">
+                <div class="glass-panel">
+                    <h2 class="section-title">Ejercicio 3: El Cohete</h2>
+                    <div id="enunciado-ej3" class="problem-statement"></div>
+                    <div class="canvas-wrapper neu-inset">
+                        <canvas id="canvas3"></canvas>
+                        <div class="controls">
+                            <button id="btn-anim-3" class="neu-btn-small">Reproducir Animación (x5)</button>
+                            <button id="btn-reset-3" class="neu-btn-small">Reiniciar</button>
+                        </div>
+                    </div>
+                    <div id="solucion-ej3" class="step-by-step-solution"></div>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="neu-footer">
+            <p>Desarrollado por Gerardthecreator Ayudando a Fabiola Parte III</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="Script.js"></script>
+    <script src="Teoría.js"></script>
+    <script src="Ejercicio1.js"></script>
+    <script src="Animacion1.js"></script>
+    <script src="Ejercicio2.js"></script>
+    <script src="Animacion2.js"></script>
+    <script src="Ejercicio3.js"></script>
+    <script src="Animacion3.js"></script>
+
+</body>
+</html>

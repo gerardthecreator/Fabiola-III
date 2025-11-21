@@ -1,0 +1,409 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+    /* Paleta de Colores */
+    --azul-rey: #2b5876;
+    --azul-clarito: #4e4376; /* Gradiente base */
+    --azul-electrico: #2962ff;
+    --silver-light: #e0e5ec;
+    --blanco: #ffffff;
+    --texto-oscuro: #2d3436;
+    --texto-azul: #1e3c72;
+
+    /* Sombras Neuromórficas (Luz y Sombra) */
+    --neu-shadow-light: rgba(255, 255, 255, 0.8);
+    --neu-shadow-dark: rgba(163, 177, 198, 0.4);
+    
+    /* Glassmorphism */
+    --glass-bg: rgba(224, 229, 236, 0.65); /* Base silver semitransparente */
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --glass-blur: 15px;
+
+    /* Fuentes */
+    --font-title: 'Anton', sans-serif;
+    --font-body: 'Oswald', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: linear-gradient(135deg, var(--azul-rey) 0%, var(--azul-clarito) 100%);
+    color: var(--texto-oscuro);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden; /* Evitar scroll horizontal */
+    padding: 20px;
+}
+
+/* =========================================
+   FONDO ANIMADO (SHAPES)
+   ========================================= */
+.background-shapes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.shape {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.8;
+    animation: float 10s infinite ease-in-out;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    top: -50px;
+    left: -50px;
+}
+
+.shape-2 {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(to right, #43e97b, #38f9d7); /* Toque sutil de contraste */
+    bottom: 50px;
+    right: -50px;
+    animation-delay: 2s;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    background: #ffffff;
+    top: 40%;
+    left: 50%;
+    opacity: 0.4;
+    animation-delay: 4s;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.05); }
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL (GLASSMORPHISM)
+   ========================================= */
+.main-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    min-height: 80vh;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    position: relative;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+.neu-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.main-title {
+    font-family: var(--font-title);
+    font-size: 3.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /* Efecto de texto gradiente */
+    background: linear-gradient(to right, var(--azul-rey), var(--azul-electrico));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.subtitle {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.2rem;
+    color: var(--texto-azul);
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* =========================================
+   NAVEGACIÓN (NEUROMORFISMO)
+   ========================================= */
+.neu-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.neu-btn {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 50px;
+    background: var(--silver-light);
+    color: var(--texto-azul);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+    
+    /* Sombra Neuromórfica Externa (Elevado) */
+    box-shadow: 
+        6px 6px 12px var(--neu-shadow-dark), 
+        -6px -6px 12px var(--neu-shadow-light);
+}
+
+.neu-btn:hover {
+    transform: translateY(-2px);
+    color: var(--azul-electrico);
+}
+
+.neu-btn.active, .neu-btn:active {
+    color: var(--azul-electrico);
+    /* Sombra Neuromórfica Interna (Hundido) */
+    box-shadow: 
+        inset 4px 4px 8px var(--neu-shadow-dark), 
+        inset -4px -4px 8px var(--neu-shadow-light);
+    transform: translateY(0);
+}
+
+/* =========================================
+   CONTENIDO Y PANELES
+   ========================================= */
+.content-area {
+    flex-grow: 1;
+    position: relative;
+}
+
+.tab-content {
+    display: none; /* Oculto por defecto */
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 
+        inset 2px 2px 5px rgba(255,255,255,0.7),
+        inset -2px -2px 5px rgba(0,0,0,0.05);
+}
+
+.section-title {
+    font-family: var(--font-title);
+    font-size: 2rem;
+    color: var(--azul-rey);
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(41, 98, 255, 0.2);
+    padding-bottom: 10px;
+}
+
+/* Estilos para el Enunciado */
+.problem-statement {
+    font-size: 1.1rem;
+    font-weight: 400;
+    background: rgba(255,255,255,0.5);
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border-left: 5px solid var(--azul-electrico);
+    line-height: 1.6;
+}
+
+/* =========================================
+   CANVAS Y ANIMACIÓN (NEUROMORFISMO HUNDIDO)
+   ========================================= */
+.canvas-wrapper {
+    width: 100%;
+    background: var(--silver-light);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Efecto Hundido (Inset) */
+    box-shadow: 
+        inset 6px 6px 12px var(--neu-shadow-dark), 
+        inset -6px -6px 12px var(--neu-shadow-light);
+}
+
+canvas {
+    background: #f0f3f7; /* Ligeramente más claro que el silver */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px;
+    height: 300px; /* Altura base */
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.controls {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.neu-btn-small {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 30px;
+    background: var(--silver-light);
+    color: var(--texto-oscuro);
+    cursor: pointer;
+    box-shadow: 
+        4px 4px 8px var(--neu-shadow-dark), 
+        -4px -4px 8px var(--neu-shadow-light);
+    transition: transform 0.2s;
+}
+
+.neu-btn-small:active {
+    box-shadow: 
+        inset 3px 3px 6px var(--neu-shadow-dark), 
+        inset -3px -3px 6px var(--neu-shadow-light);
+}
+
+/* =========================================
+   RESOLUCIÓN PASO A PASO
+   ========================================= */
+.step-by-step-solution {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.step-card {
+    background: var(--silver-light);
+    border-radius: 15px;
+    padding: 20px;
+    /* Sombra suave externa */
+    box-shadow: 
+        5px 5px 10px var(--neu-shadow-dark), 
+        -5px -5px 10px var(--neu-shadow-light);
+    transition: transform 0.3s ease;
+}
+
+.step-card:hover {
+    transform: scale(1.01);
+}
+
+.step-title {
+    font-family: var(--font-title);
+    color: var(--azul-electrico);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.step-title::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: var(--azul-electrico);
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 5px var(--azul-electrico);
+}
+
+.step-content {
+    font-size: 1rem;
+    color: var(--texto-oscuro);
+    line-height: 1.6;
+}
+
+/* Estilo especial para MathJax dentro de las tarjetas */
+mjx-container {
+    font-size: 1.1em !important;
+    color: var(--texto-azul);
+    margin: 10px 0;
+    overflow-x: auto; /* Scroll si la fórmula es muy larga */
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+.neu-footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: var(--texto-azul);
+    opacity: 0.8;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+/* =========================================
+   INDICADOR DE CARGA (SPINNER)
+   ========================================= */
+.loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    gap: 15px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--silver-light);
+    border-top: 5px solid var(--azul-electrico);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    box-shadow: 
+        inset 2px 2px 5px rgba(0,0,0,0.1),
+        0 5px 10px rgba(0,0,0,0.1);
+}
+
+.loading-text {
+    font-family: var(--font-body);
+    color: var(--azul-rey);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}

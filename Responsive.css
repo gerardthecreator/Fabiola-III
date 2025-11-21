@@ -1,0 +1,199 @@
+/* =========================================
+   RESPONSIVE DESIGN (TABLETS Y MÓVILES)
+   ========================================= */
+
+/* Ajustes generales para pantallas medianas (< 768px) */
+@media screen and (max-width: 768px) {
+    
+    .main-wrapper {
+        padding: 20px;
+        width: 95%;
+        margin-top: 10px;
+        min-height: auto; /* Permitir que crezca según contenido */
+    }
+
+    .main-title {
+        font-size: 2.5rem; /* Reducción de título Anton */
+    }
+
+    .neu-nav {
+        gap: 15px;
+    }
+
+    .neu-btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   VISTA MÓVIL ESTRICTA (≤ 540px)
+   Requisito principal del usuario
+   ========================================= */
+@media screen and (max-width: 540px) {
+
+    /* 1. AJUSTES DEL CONTENEDOR PRINCIPAL */
+    body {
+        padding: 10px; /* Menos padding en el body */
+        align-items: flex-start; /* Alinear arriba para permitir scroll natural */
+    }
+
+    .main-wrapper {
+        padding: 15px; /* Espacio interno reducido */
+        border-radius: 20px; /* Bordes menos redondeados para ganar espacio */
+        gap: 20px;
+    }
+
+    /* 2. TIPOGRAFÍA ADAPTADA */
+    .main-title {
+        font-size: 2rem; /* Título más compacto */
+        line-height: 1.1;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        margin-bottom: 15px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    /* 3. NAVEGACIÓN (Botones apilados o en grilla) */
+    .neu-nav {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* 2 columnas */
+        gap: 12px;
+        padding: 5px;
+    }
+
+    .neu-btn {
+        width: 100%;
+        padding: 10px 5px;
+        font-size: 0.9rem;
+        border-radius: 15px; /* Radio menor */
+        text-align: center;
+        
+        /* Sombras más sutiles para pantallas pequeñas */
+        box-shadow: 
+            3px 3px 6px var(--neu-shadow-dark), 
+            -3px -3px 6px var(--neu-shadow-light);
+    }
+
+    .neu-btn.active {
+        box-shadow: 
+            inset 2px 2px 5px var(--neu-shadow-dark), 
+            inset -2px -2px 5px var(--neu-shadow-light);
+    }
+
+    /* 4. AJUSTE DE PANELES Y TARJETAS */
+    .glass-panel {
+        padding: 15px; /* Menos padding interno */
+        border-radius: 15px;
+    }
+
+    .problem-statement {
+        font-size: 1rem;
+        padding: 15px;
+        text-align: justify;
+    }
+
+    /* 5. CANVAS Y ANIMACIONES */
+    .canvas-wrapper {
+        padding: 10px;
+        border-radius: 15px;
+        /* Ajuste de sombra inset */
+        box-shadow: 
+            inset 3px 3px 6px var(--neu-shadow-dark), 
+            inset -3px -3px 6px var(--neu-shadow-light);
+    }
+
+    canvas {
+        height: 200px; /* Altura fija menor para móviles */
+        max-width: 100%;
+    }
+
+    .controls {
+        flex-direction: column; /* Botones uno debajo del otro */
+        width: 100%;
+        gap: 10px;
+    }
+
+    .neu-btn-small {
+        width: 100%; /* Botones de control full width */
+        padding: 10px;
+    }
+
+    /* 6. DATOS Y FÓRMULAS (Evitar desbordamiento) */
+    .datos-container {
+        flex-direction: column; /* Datos en lista vertical */
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .dato-badge {
+        justify-content: center;
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    /* MathJax: Scroll horizontal si la fórmula es muy larga */
+    mjx-container {
+        overflow-x: auto;
+        overflow-y: hidden;
+        max-width: 100%;
+        padding-bottom: 5px; /* Espacio para el scrollbar si aparece */
+        font-size: 0.9rem !important; /* Reducir ligeramente tamaño de fórmula */
+    }
+
+    /* 7. TARJETAS DE PASO A PASO */
+    .step-card {
+        padding: 15px;
+    }
+
+    .step-title {
+        font-size: 1.1rem;
+    }
+
+    .step-content {
+        font-size: 0.95rem;
+    }
+
+    /* 8. RESULTADO FINAL */
+    .resultado-final {
+        padding: 15px;
+    }
+
+    .resultado-final h3 {
+        font-size: 1.2rem;
+    }
+
+    .resultado-valor {
+        font-size: 1.5rem;
+        word-break: break-word; /* Evitar que números largos rompan el diseño */
+    }
+
+    /* 9. FONDO (Optimización visual) */
+    .shape {
+        opacity: 0.5; /* Menos distracción en pantallas pequeñas */
+    }
+}
+
+/* =========================================
+   AJUSTES PARA PANTALLAS MUY PEQUEÑAS (< 360px)
+   (Galaxy Fold cerrado, iPhone SE antiguo, etc.)
+   ========================================= */
+@media screen and (max-width: 360px) {
+    .neu-nav {
+        grid-template-columns: 1fr; /* 1 sola columna de botones */
+    }
+
+    .main-title {
+        font-size: 1.6rem;
+    }
+    
+    .dato-badge {
+        font-size: 0.85rem;
+    }
+}

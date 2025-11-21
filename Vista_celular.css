@@ -1,0 +1,144 @@
+/* =========================================
+   OPTIMIZACIÓN ESPECÍFICA PARA MÓVILES (UX/UI)
+   Target: Dispositivos ≤ 540px
+   ========================================= */
+
+@media screen and (max-width: 540px) {
+
+    /* 1. MEJORA DE INTERACCIÓN TÁCTIL (TOUCH TARGETS) */
+    
+    /* Eliminar el delay de 300ms en clicks móviles */
+    button, .neu-btn, .neu-btn-small {
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent; /* Quitar el recuadro azul al tocar en Android/iOS */
+    }
+
+    /* Aumentar área de contacto mínima recomendada */
+    .neu-btn, .neu-btn-small {
+        min-height: 44px; /* Estándar de accesibilidad móvil */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* 2. REAJUSTE DE NEUROMORFISMO PARA PANTALLAS TÁCTILES */
+    
+    /* En móvil no existe "hover", así que desactivamos efectos que dependen del mouse
+       y potenciamos el estado "active" (cuando el dedo presiona) */
+    
+    .neu-btn:hover, .step-card:hover, .concept-card:hover {
+        transform: none; /* Evitar saltos al hacer scroll */
+    }
+
+    /* Feedback visual inmediato al presionar */
+    .neu-btn:active, .neu-btn-small:active {
+        transform: scale(0.96);
+        transition: transform 0.1s;
+    }
+
+    /* 3. OPTIMIZACIÓN DE RENDIMIENTO (GLASSMORPHISM) */
+    
+    /* Reducir la carga de GPU en el desenfoque del fondo para móviles gama media/baja */
+    .main-wrapper {
+        backdrop-filter: blur(10px); /* Blur un poco menor que en escritorio */
+        -webkit-backdrop-filter: blur(10px);
+    }
+
+    /* Ralentizar animaciones de fondo para ahorrar batería */
+    .shape {
+        animation-duration: 15s; 
+    }
+
+    /* 4. AJUSTES DE LECTURA Y TIPOGRAFÍA MÓVIL */
+    
+    body {
+        /* Prevenir rebote elástico excesivo en iOS */
+        overscroll-behavior-y: none;
+    }
+
+    p, .step-content, .concept-text {
+        font-size: 16px; /* Tamaño base legible para evitar zoom automático */
+        line-height: 1.5;
+        text-align: left; /* Justificado a la izquierda es más fácil de leer en columnas angostas */
+    }
+
+    /* Ajuste de fórmulas matemáticas para que no se corten */
+    mjx-container {
+        padding: 10px 0;
+        margin: 5px 0;
+        /* Indicador visual sutil de que se puede hacer scroll horizontal */
+        background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,0.5) 10%, rgba(255,255,255,0.5) 90%, rgba(255,255,255,0));
+    }
+
+    /* 5. ADAPTACIÓN DE LA INTERFAZ DE ANIMACIÓN (CANVAS) */
+    
+    /* Evitar que al tocar el canvas para interactuar se mueva la página */
+    canvas {
+        touch-action: none; 
+        border: 2px solid rgba(255, 255, 255, 0.5); /* Borde más visible en móvil */
+    }
+
+    /* Controles más ergonómicos (zona inferior del pulgar) */
+    .controls {
+        margin-top: 15px;
+        padding-bottom: 5px;
+    }
+
+    /* 6. AJUSTES PARA "NOTCH" Y BARRAS DE NAVEGACIÓN (iPhone X+, Android modernos) */
+    
+    .main-wrapper {
+        padding-bottom: calc(20px + env(safe-area-inset-bottom));
+    }
+
+    /* 7. ESTILOS ESPECÍFICOS PARA LOS RESULTADOS EN MÓVIL */
+    
+    .resultado-final {
+        margin: 10px 0;
+        border-radius: 15px;
+    }
+
+    .resultado-valor {
+        font-size: 1.8rem; /* Ligeramente más pequeño para evitar quiebres de línea */
+    }
+
+    /* 8. CORRECCIÓN DE FORMULARIOS Y INPUTS (Si se agregaran a futuro) */
+    input, textarea {
+        font-size: 16px; /* Evita que iOS haga zoom al enfocar */
+    }
+    
+    /* 9. DETALLES VISUALES FINOS */
+    
+    /* Las tarjetas de pasos ocupan todo el ancho disponible */
+    .step-card {
+        margin-bottom: 15px;
+        border: 1px solid rgba(255,255,255,0.2); /* Borde extra para contraste en pantallas con mucho brillo */
+    }
+    
+    /* Ocultar decoraciones innecesarias que ocupan espacio */
+    .step-title::before {
+        width: 8px;
+        height: 8px; /* Puntos más pequeños */
+    }
+}
+
+/* =========================================
+   MODO LANDSCAPE EN MÓVILES (Celular girado)
+   ========================================= */
+@media screen and (max-width: 900px) and (orientation: landscape) and (max-height: 500px) {
+    
+    .main-wrapper {
+        min-height: auto;
+        margin: 10px auto;
+    }
+
+    .neu-nav {
+        display: flex; /* Volver a flex en horizontal */
+        flex-wrap: nowrap;
+        overflow-x: auto; /* Scroll horizontal si no caben */
+        padding-bottom: 10px;
+    }
+
+    canvas {
+        height: 150px; /* Canvas más corto para ver el contenido */
+    }
+}

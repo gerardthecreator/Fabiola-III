@@ -1,0 +1,231 @@
+/* =========================================
+   DETALLES VISUALES Y COMPONENTES ESPECÍFICOS
+   ========================================= */
+
+/* --- Scrollbar Personalizado (Estilo Minimalista) --- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--silver-light); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--azul-rey); 
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--azul-electrico); 
+}
+
+/* =========================================
+   ESTILOS PARA LA SECCIÓN DE TEORÍA
+   ========================================= */
+
+/* Tarjetas de Conceptos (Grid) */
+.concept-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.concept-card {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 4px solid var(--azul-rey);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* Efecto Glass + Neuromorfismo plano */
+    backdrop-filter: blur(5px);
+    box-shadow: 
+        5px 5px 10px rgba(163, 177, 198, 0.3), 
+        -5px -5px 10px rgba(255, 255, 255, 0.8);
+}
+
+.concept-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        8px 8px 15px rgba(163, 177, 198, 0.4), 
+        -8px -8px 15px rgba(255, 255, 255, 0.9);
+}
+
+.concept-title {
+    font-family: var(--font-title);
+    font-size: 1.4rem;
+    color: var(--azul-rey);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.concept-text {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1rem;
+    color: var(--texto-oscuro);
+    text-align: justify;
+}
+
+/* =========================================
+   ESTILOS PARA LOS EJERCICIOS (PASO A PASO)
+   ========================================= */
+
+/* Contenedor de Datos Iniciales */
+.datos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.dato-badge {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--azul-rey);
+    font-size: 1rem;
+    
+    /* Sombra Neuromórfica Convexa */
+    box-shadow: 
+        5px 5px 10px #d1d1d1, 
+        -5px -5px 10px #ffffff;
+    
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dato-badge span {
+    font-weight: 700;
+    color: var(--azul-electrico);
+}
+
+/* Resaltado de Fórmulas dentro del texto */
+.formula-box {
+    background: var(--azul-rey);
+    color: var(--blanco);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    text-align: center;
+    font-size: 1.2rem;
+    box-shadow: inset 3px 3px 7px rgba(0,0,0,0.3); /* Efecto hundido oscuro */
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Texto explicativo "Por qué" y "Para qué" */
+.explicacion-texto {
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 3px solid var(--azul-clarito);
+    background: rgba(78, 67, 118, 0.05);
+    font-size: 0.95rem;
+    font-style: italic;
+    border-radius: 0 10px 10px 0;
+}
+
+.explicacion-texto strong {
+    color: var(--azul-clarito);
+    font-family: var(--font-title);
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   RESULTADOS FINALES
+   ========================================= */
+
+.resultado-final {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, var(--azul-rey) 0%, var(--azul-electrico) 100%);
+    color: var(--blanco);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    
+    /* Sombra brillante */
+    box-shadow: 0 10px 25px rgba(41, 98, 255, 0.4);
+    animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.resultado-final h3 {
+    font-family: var(--font-title);
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.resultado-valor {
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Decoración de brillo en el resultado */
+.resultado-final::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 60%);
+    transform: rotate(45deg);
+    pointer-events: none;
+}
+
+/* =========================================
+   ELEMENTOS DECORATIVOS
+   ========================================= */
+
+/* Separadores sutiles */
+.divider {
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--silver-light), transparent);
+    margin: 30px 0;
+    width: 100%;
+}
+
+/* Iconos o indicadores de paso */
+.step-number {
+    background: var(--azul-rey);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-title);
+    font-size: 0.9rem;
+    margin-right: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+/* Highlight para variables en texto corrido */
+.var-highlight {
+    font-weight: bold;
+    color: var(--azul-rey);
+    background: rgba(255,255,255,0.5);
+    padding: 0 4px;
+    border-radius: 4px;
+    font-family: 'Times New Roman', serif; /* Para que parezca variable matemática */
+    font-style: italic;
+}
